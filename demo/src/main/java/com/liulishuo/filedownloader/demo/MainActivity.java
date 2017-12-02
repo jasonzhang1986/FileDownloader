@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // FileDownloader Engine for statistic or others
         // If you have such requirement, just implement FileDownloadMonitor.IMonitor, and register it
         // use FileDownloadDownloader.setGlobalMonitor the same as below code.
+
         FileDownloadMonitor.setGlobalMonitor(GlobalMonitor.getImpl());
     }
 
