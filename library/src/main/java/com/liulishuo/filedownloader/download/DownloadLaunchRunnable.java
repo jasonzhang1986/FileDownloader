@@ -566,7 +566,7 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
 
     private void fetchWithMultipleConnectionFromBeginning(final long totalLength, final int connectionCount) throws InterruptedException {
         long startOffset = 0;
-        final long eachRegion = totalLength / connectionCount;
+        final long eachRegion = totalLength / connectionCount;  //多线程下载时平均分配需要下载的大小
         final int id = model.getId();
 
         final List<ConnectionModel> connectionModelList = new ArrayList<>();

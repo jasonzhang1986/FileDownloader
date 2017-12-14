@@ -85,7 +85,9 @@ public class CustomComponentHolder {
 
         synchronized (this) {
             if (database == null) {
+                //数据库对象为null时，说明第一次使用，创建默认对象
                 database = getDownloadMgrInitialParams().createDatabase();
+                //从数据库中恢复之前未完成的任务
                 maintainDatabase(database.maintainer());
             }
         }
@@ -148,6 +150,7 @@ public class CustomComponentHolder {
         return initialParams;
     }
 
+    //读取数据库，校验之前未下载完成的数据，丢弃异常数据，恢复可以正常下载的数据
     private static void maintainDatabase(FileDownloadDatabase.Maintainer maintainer) {
         final Iterator<FileDownloadModel> iterator = maintainer.iterator();
         long refreshDataCount = 0;
