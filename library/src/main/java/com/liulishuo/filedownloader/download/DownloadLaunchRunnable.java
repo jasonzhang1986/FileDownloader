@@ -246,7 +246,7 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
                 try {
 
 
-                    // 1. connect
+                    // 1. connect，主要检查网络（是否申请了网络访问权限，是否是wifi）
                     checkupBeforeConnect();
 
                     // the first connection is for: 1. etag verify; 2. first connect.
@@ -870,6 +870,7 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
                 throw new DiscardSafely();
             }
 
+            //从数据中查找是否有未下载完成的case
             final FileDownloadModel fileCaseModel = database.find(fileCaseId);
 
             if (fileCaseModel != null) {
@@ -878,6 +879,8 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
                 // whether the another task with the same file and url is downloading.
                 if (FileDownloadHelper.inspectAndInflowDownloading(id, fileCaseModel,
                         threadPoolMonitor, false)) {
+
+                    //同样的文件已经在下载中，则直接丢弃
                     //it has been post to upper layer the 'warn' message, so the current
                     // task no need to continue download.
                     database.remove(id);

@@ -108,7 +108,7 @@ public class ConnectTask {
     }
 
     void addRangeHeader(FileDownloadConnection connection) {
-        if (connection.dispatchAddResumeOffset(etag, profile.startOffset)) {
+        if (connection.dispatchAddResumeOffset(etag, profile.startOffset)) { //默认实现为false，？？？
             return;
         }
 
