@@ -186,6 +186,7 @@ class FileDownloadManager implements IThreadPoolMonitor {
                         .build();
 
         // - execute
+        //mThreadPool的大小通过配置文件可以修改，默认是3
         mThreadPool.execute(runnable);
 
     }

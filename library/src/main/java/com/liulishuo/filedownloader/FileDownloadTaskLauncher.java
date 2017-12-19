@@ -132,6 +132,7 @@ class FileDownloadTaskLauncher {
 
         private void init() {
             mWorkQueue = new LinkedBlockingQueue<>();
+            //核心池大小和线程池最大数都是3，也就是最大并发是3
             mPool = FileDownloadExecutors.newDefaultThreadPool(3, mWorkQueue, "LauncherTask");
         }
 
