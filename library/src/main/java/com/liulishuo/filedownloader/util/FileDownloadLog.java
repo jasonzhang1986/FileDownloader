@@ -28,11 +28,11 @@ public class FileDownloadLog {
 
     public static boolean NEED_LOG = false;
 
-    private final static String TAG = "FileDownloader.";
-
     public static void e(Object o, Throwable e, String msg, Object... args) {
         log(Log.ERROR, o, e, msg, args);
     }
+
+    private final static String TAG = "FileDownloader.";
 
     public static void e(Object o, String msg, Object... args) {
         log(Log.ERROR, o, msg, args);

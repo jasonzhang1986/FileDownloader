@@ -67,7 +67,7 @@ public class DownloadRunnable implements Runnable {
     @Override
     public void run() {
         Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
-
+        FileDownloadLog.e(this, "downloadId=%d url=%s, profile=%s", downloadId, connectTask.url, connectTask.getProfile().toString());
         FileDownloadConnection connection = null;
         final long beginOffset = connectTask.getProfile().currentOffset;
         boolean isConnected = false;

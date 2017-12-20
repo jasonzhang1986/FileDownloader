@@ -164,7 +164,7 @@ public class SingleTaskTestActivity extends AppCompatActivity {
                 tag.setFilenameTv(filenameTv1);
                 break;
             case 2:
-                url = Constant.LIULISHUO_APK_URL;
+                url = "http://180.153.105.144/dd.myapp.com/16891/E2F3DEBB12A049ED921C6257C5E9FB11.apk";
                 tag = new ViewHolder(new WeakReference<>(this), progressBar2, null, speedTv2, 2);
                 path = llsApkDir;
                 isDir = true;

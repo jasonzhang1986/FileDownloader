@@ -565,7 +565,7 @@ public class DownloadTaskHunter implements ITaskHunter, ITaskHunter.IStarter, IT
 
         final BaseDownloadTask.IRunningTask runningTask = mTask.getRunningTask();
         final BaseDownloadTask origin = runningTask.getOrigin();
-
+        FileDownloadLog.e(this,"start id = %d, url=%s", origin.getId(), origin.getUrl());
         final ILostServiceConnectedHandler lostConnectedHandler = FileDownloader.getImpl().
                 getLostConnectedHandler();
         try {

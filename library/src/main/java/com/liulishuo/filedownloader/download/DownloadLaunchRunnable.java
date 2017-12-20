@@ -197,7 +197,7 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
     public void run() {
         try {
             Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
-
+            FileDownloadLog.e(this,"run model.id = %d", model.getId());
             // status checkout
             if (model.getStatus() != FileDownloadStatus.pending) {
                 if (model.getStatus() == FileDownloadStatus.paused) {
@@ -259,7 +259,7 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
                             .setHeader(userRequestHeader)
                             .setConnectionProfile(connectionProfile)
                             .build();
-
+                    FileDownloadLog.e(this, "firstConnectionTask url=%s profile = " + connectionProfile.toString(), model.getUrl());
                     connection = firstConnectionTask.connect();
                     handleFirstConnected(firstConnectionTask.getRequestHeader(),
                             firstConnectionTask, connection);
@@ -283,6 +283,7 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
                         } else {
                             connectionCount = CustomComponentHolder.getImpl()
                                     .determineConnectionCount(model.getId(), model.getUrl(), model.getPath(), totalLength);
+                            FileDownloadLog.e(this, "model.id=%d, determineConnectionCount = %d", model.getId(), connectionCount);
                         }
                     } else {
                         connectionCount = 1;
@@ -305,6 +306,7 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
                         fetchWithSingleConnection(firstConnectionTask.getProfile(), connection);
                     } else {
                         if (connection != null) {
+                            FileDownloadLog.d(this, "connection!=null need ending");
                             connection.ending();
                             connection = null;
                         }
@@ -592,6 +594,7 @@ public class DownloadLaunchRunnable implements Runnable, ProcessCallback {
 
             database.insertConnectionModel(connectionModel);
             startOffset += eachRegion;
+            FileDownloadLog.d(this, "connectionModel = " + connectionModel.toString());
         }
 
         model.setConnectionCount(connectionCount);

@@ -108,6 +108,7 @@ public class CustomComponentHolder {
     }
 
     private FileDownloadHelper.ConnectionCountAdapter getConnectionCountAdapter() {
+        FileDownloadLog.e(this, "connectionCountAdapter = " + connectionCountAdapter);
         if (connectionCountAdapter != null) return connectionCountAdapter;
 
         synchronized (this) {

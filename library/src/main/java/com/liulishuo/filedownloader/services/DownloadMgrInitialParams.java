@@ -123,7 +123,7 @@ public class DownloadMgrInitialParams {
         final FileDownloadHelper.ConnectionCountAdapter adapter = mMaker.mConnectionCountAdapter;
         if (adapter != null) {
             if (FileDownloadLog.NEED_LOG) {
-                FileDownloadLog.d(this, "initial FileDownloader manager with the customize " +
+                FileDownloadLog.e(this, "initial FileDownloader manager with the customize " +
                         "connection count adapter: %s", adapter);
             }
             return adapter;
@@ -171,6 +171,7 @@ public class DownloadMgrInitialParams {
     }
 
     private FileDownloadHelper.ConnectionCountAdapter createDefaultConnectionCountAdapter() {
+        FileDownloadLog.d(this, "createDefaultConnectionCountAdapter");
         return new DefaultConnectionCountAdapter();
     }
 

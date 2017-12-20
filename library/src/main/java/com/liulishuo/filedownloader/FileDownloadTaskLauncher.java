@@ -16,6 +16,8 @@
 
 package com.liulishuo.filedownloader;
 
+import android.util.Log;
+
 import com.liulishuo.filedownloader.message.MessageSnapshotFlow;
 import com.liulishuo.filedownloader.util.FileDownloadExecutors;
 import com.liulishuo.filedownloader.util.FileDownloadLog;
@@ -152,7 +154,6 @@ class FileDownloadTaskLauncher {
             if (mExpired) {
                 return;
             }
-
             mTaskStarter.start();
         }
 

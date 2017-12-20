@@ -50,6 +50,7 @@ class FileDownloadManager implements IThreadPoolMonitor {
     public FileDownloadManager() {
         final CustomComponentHolder holder = CustomComponentHolder.getImpl();
         this.mDatabase = holder.getDatabaseInstance();
+        FileDownloadLog.e(this, "maxNetworkThreadCount = %d",holder.getMaxNetworkThreadCount());
         this.mThreadPool = new FileDownloadThreadPool(holder.getMaxNetworkThreadCount());
     }
 
@@ -153,6 +154,7 @@ class FileDownloadManager implements IThreadPoolMonitor {
                 }
             }
         } else {
+            FileDownloadLog.d(this, "new FileDownloadModel.....");
             if (model == null) {
                 model = new FileDownloadModel();
             }

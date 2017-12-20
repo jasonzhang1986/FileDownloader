@@ -43,6 +43,7 @@ public class DemoApplication extends Application {
                         .readTimeout(15_000) // set read timeout.
                         .proxy(Proxy.NO_PROXY) // set proxy
                 ))
+                .connectionCountAdapter(new CustomConnectionCountAdapter())
                 .commit();
 
         // below codes just for monitoring thread pools in the FileDownloader:

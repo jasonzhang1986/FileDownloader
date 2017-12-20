@@ -17,6 +17,7 @@
 package com.liulishuo.filedownloader.download;
 
 import android.os.SystemClock;
+import android.util.Log;
 
 import com.liulishuo.filedownloader.connection.FileDownloadConnection;
 import com.liulishuo.filedownloader.exception.FileDownloadGiveUpRetryException;
@@ -119,8 +120,7 @@ public class FetchDataTask {
             }
 
             if (FileDownloadLog.NEED_LOG) {
-                FileDownloadLog.d(this, "start fetch(%d): range [%d, %d), seek to[%d]",
-                        connectionIndex, startOffset, endOffset, currentOffset);
+                Log.e("FileDownloader.Fetch",FileDownloadUtils.formatString("start fetch(connectIndex=%d, downloadId=%d): range [%d, %d), seek to[%d]", connectionIndex, downloadId, startOffset, endOffset, currentOffset));
             }
 
             inputStream = connection.getInputStream();
