@@ -16,6 +16,8 @@
 
 package com.liulishuo.filedownloader.message;
 
+import com.liulishuo.filedownloader.util.FileDownloadLog;
+
 /**
  * The internal message snapshot station.
  * <p>
@@ -35,6 +37,7 @@ public class MessageSnapshotFlow {
     }
 
     public void setReceiver(MessageReceiver receiver) {
+        FileDownloadLog.e(this, "[%d]setReceiver "+receiver, getImpl().hashCode());
         this.receiver = receiver;
         if (receiver == null) {
             this.flowThreadPool = null;
@@ -44,6 +47,7 @@ public class MessageSnapshotFlow {
     }
 
     public void inflow(final MessageSnapshot snapshot) {
+        FileDownloadLog.e(this, "[%d]inflow snapshot = " + snapshot, getImpl().hashCode());
         if (snapshot instanceof IFlowDirectly) {
             if (receiver != null) {
                 receiver.receive(snapshot);

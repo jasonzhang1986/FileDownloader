@@ -38,6 +38,7 @@ class FileDownloadTaskLauncher {
         static {
             // We add the message receiver to the message snapshot flow central, when there is a
             // task request to launch.
+            //这里设置主进程的消息处理的Receiver
             MessageSnapshotFlow.getImpl().setReceiver(new MessageSnapshotGate());
         }
     }

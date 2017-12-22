@@ -29,6 +29,7 @@ import com.liulishuo.filedownloader.model.FileDownloadStatus;
 import com.liulishuo.filedownloader.services.BaseFileServiceUIGuard;
 import com.liulishuo.filedownloader.services.FileDownloadService.SeparateProcessService;
 import com.liulishuo.filedownloader.util.DownloadServiceNotConnectedHelper;
+import com.liulishuo.filedownloader.util.FileDownloadLog;
 
 
 /**
@@ -75,6 +76,8 @@ class FileDownloadServiceUIGuard extends
 
         @Override
         public void callback(MessageSnapshot snapshot) throws RemoteException {
+            FileDownloadLog.e(this, "snapshot=%s", snapshot);
+            //这里是将server端的Message放到Client端的MessageFlow中
             MessageSnapshotFlow.getImpl().inflow(snapshot);
         }
     }

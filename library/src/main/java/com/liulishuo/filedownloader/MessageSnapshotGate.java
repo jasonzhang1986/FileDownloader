@@ -75,7 +75,7 @@ public class MessageSnapshotGate implements MessageSnapshotFlow.MessageReceiver 
                 final BaseDownloadTask topOriginTask = taskList.get(0).getOrigin();
 
                 if (FileDownloadLog.NEED_LOG) {
-                    FileDownloadLog.d(this, "~~~callback %s old[%s] new[%s] %d",
+                    FileDownloadLog.e(this, "~~~callback %s old[%s] new[%s] %d",
                             snapshot.getId(), topOriginTask.getStatus(), snapshot.getStatus(),
                             taskList.size());
                 }
